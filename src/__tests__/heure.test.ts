@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { getHour, getValue } from "../modules/heure";
+import { getHour, getHourFromValue, getValue } from "../modules/heure";
 
 describe("function getValue", () => {
     describe("when lune is 1", () => {
@@ -92,3 +92,37 @@ describe("function calculerHeure", () => {
         });
     })
 });
+
+describe("function getHourFromValue", () => {
+    test("when value is 0", () => {
+        expect(getHourFromValue(0)).toBe("mortin");
+    });
+
+    test("when value is 1", () => {
+        expect(getHourFromValue(1)).toBe("mortin");
+    });
+
+    test("when value is 1.5", () => {
+        expect(getHourFromValue(1.5)).toBe("aprenoon");
+    });
+
+    test("when value is 2", () => {
+        expect(getHourFromValue(2)).toBe("aprenoon");
+    });
+
+    test("when value is 2.5", () => {
+        expect(getHourFromValue(2.5)).toBe("soirning");
+    });
+
+    test("when value is 3", () => {
+        expect(getHourFromValue(3)).toBe("soirning");
+    });
+
+    test("when value is 4", () => {
+        expect(getHourFromValue(4)).toBe("soirning");
+    });
+
+    test("when value is 5", () => {
+        expect(getHourFromValue(5)).toBe("nuight");
+    });
+})
