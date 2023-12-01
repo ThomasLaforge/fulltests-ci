@@ -1,34 +1,41 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { getHour } from './modules/heure'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [lune, setLune] = useState(1)
+  const [terre, setTerre] = useState(1)
+  const [soleil, setSoleil] = useState(1)
+
+  const handleChangeValue = (type: string, e: ChangeEvent<HTMLInputElement>) => {
+    console.log(type, e.target.value);
+    
+    let value = parseInt(e.target.value)
+    
+    if(value === 1 || value === 2) {
+      if (type === "lune") {
+        setLune(value)
+      } else if (type === "terre") {
+        setTerre(value)
+      } else if (type === "soleil") {
+        setSoleil(value)
+      }
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="app">
+        <div className="heure-form">
+          <input type="number" min={1} max={1} value={lune} onChange={(e) => handleChangeValue("lune", e)} />
+          <input type="number" min={1} max={1} value={terre} onChange={(e) => handleChangeValue("terre", e)} />
+          <input type="number" min={1} max={1} value={soleil} onChange={(e) => handleChangeValue("soleil", e)} />
+        </div>
+        <div className="heure">
+          <div className="heure-value">{getHour(lune, terre, soleil)}</div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
   )
 }
 
