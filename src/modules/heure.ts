@@ -29,7 +29,7 @@ export function getValue(lune: number, terre: number, soleil: number): number {
         }
         
         if(terre == 2) {
-            heure = 2;
+            heure = 6;
         }
     }
     
@@ -60,22 +60,23 @@ export function getHourFromValue(value: number): string {
     }
 }
 
-export function getHour(lune: number, terre: number, soleil: number): string {    
-    return getHourFromValue(getValue(lune, terre, soleil));
+// export function getHour(lune: number, terre: number, soleil: number): string {    
+//     return getHourFromValue(getValue(lune, terre, soleil));
+// }
+
+export function getHour(lune: number, terre: number, soleil: number): string {
+    if(lune === 1 && soleil === 1){
+        return "mortin";
+    }
+    if(lune === 2 && soleil === 1){
+        return "aprenoon";
+    }
+    if(lune === 2 && terre === 1 && soleil === 2){
+        return "soirning";
+    }
+    return "nuight";
 }
 
-// export function getHour(lune: number, terre: number, soleil: number): string {
-//     if(lune === 1 && soleil === 1){
-//         return "mortin";
-//     }
-//     if(lune === 2 && soleil === 1){
-//         return "aprenoon";
-//     }
-//     if(lune === 2 && terre === 1 && soleil === 2){
-//         return "soirning";
-//     }
-//     return "nuight";
-// }
 // Afficher toutes les possibilités
 
 // for(let lune = 1; lune <= 2; lune++) {

@@ -19,7 +19,7 @@ describe("function getValue", () => {
             });
 
             test("when soleil is 2", () => {
-                expect(getValue(1, 2, 2)).toBe(2);
+                expect(getValue(1, 2, 2)).toBe(6);
             });
         });
     })
@@ -41,7 +41,7 @@ describe("function getValue", () => {
             });
 
             test("when soleil is 2", () => {
-                expect(getValue(2, 2, 2)).toBe(2);
+                expect(getValue(2, 2, 2)).toBe(6);
             });
         });
     })
@@ -65,7 +65,7 @@ describe("function calculerHeure", () => {
             });
 
             test("when soleil is 2", () => {
-                expect(getHour(1, 2, 2)).toBe("aprenoon");
+                expect(getHour(1, 2, 2)).toBe("nuight");
             });
         });
     })
@@ -87,7 +87,7 @@ describe("function calculerHeure", () => {
             });
 
             test("when soleil is 2", () => {
-                expect(getHour(2, 2, 2)).toBe("aprenoon");
+                expect(getHour(2, 2, 2)).toBe("nuight");
             });
         });
     })

@@ -1,18 +1,23 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test.beforeEach(async ({ page }) => {
+  await page.goto('http://localhost:5173/');
+})
 
+// test('saisir un nombre trop grand', async ({ page }) => {
+//   // Expect a title "to contain" a substring.
+//   await page.locator('#terre').fill('2');
+//   await expect(page.locator('#terre')).toHaveValue('2');
+// });
+
+test('control no result at start', async ({ page }) => {
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
+  await expect(page.locator('.heure-value')).not.toBeVisible();
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+test('control click on show button, show result', async ({ page }) => {
+  // Expect a title "to contain" a substring.
+  await page.locator('#btn-show').click();
+  await expect(page.locator('.heure-value')).toBeVisible();
 });

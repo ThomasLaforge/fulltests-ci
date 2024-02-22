@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useCallback, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,6 +8,7 @@ function App() {
   const [lune, setLune] = useState(1)
   const [terre, setTerre] = useState(1)
   const [soleil, setSoleil] = useState(1)
+  const [showResult, setShowResult] = useState(false)
 
   const handleChangeValue = (type: string, e: ChangeEvent<HTMLInputElement>) => {
     console.log(type, e.target.value);
@@ -25,15 +26,21 @@ function App() {
     }
   }
 
+  const handleShowResult = useCallback(() => {
+    setShowResult(true)
+  }, [])
+
   return (
       <div className="app">
         <div className="heure-form">
-          <input type="number" min={1} max={1} value={lune} onChange={(e) => handleChangeValue("lune", e)} />
-          <input type="number" min={1} max={1} value={terre} onChange={(e) => handleChangeValue("terre", e)} />
-          <input type="number" min={1} max={1} value={soleil} onChange={(e) => handleChangeValue("soleil", e)} />
+          <input type="number" id="lune" min={1} max={1} value={lune} onChange={(e) => handleChangeValue("lune", e)} />
+          <input type="number" id="terre" min={1} max={1} value={terre} onChange={(e) => handleChangeValue("terre", e)} />
+          <input type="number" id="soleil" min={1} max={1} value={soleil} onChange={(e) => handleChangeValue("soleil", e)} />
         </div>
+
+        <button id="btn-show" onClick={handleShowResult}>Afficher</button>
         <div className="heure">
-          <div className="heure-value">{getHour(lune, terre, soleil)}</div>
+          {showResult && <div className="heure-value">{getHour(lune, terre, soleil)}</div>}
         </div>
       </div>
   )
