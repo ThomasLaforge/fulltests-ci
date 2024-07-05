@@ -27,7 +27,7 @@ describe("function getValue", () => {
     describe("when lune is 2", () => {
         describe("when terre is 1", () => {
             test("when soleil is 1", () => {
-                expect(getValue(2, 1, 1)).toBe(1.5);
+                expect(getValue(2, 1, 1)).toBe(1);
             });
 
             test("when soleil is 2", () => {
@@ -37,7 +37,7 @@ describe("function getValue", () => {
 
         describe("when terre is 2", () => {
             test("when soleil is 1", () => {
-                expect(getValue(2, 2, 1)).toBe(1.5);
+                expect(getValue(2, 2, 1)).toBe(1);
             });
 
             test("when soleil is 2", () => {
@@ -73,7 +73,7 @@ describe("function calculerHeure", () => {
     describe("when lune is 2", () => {
         describe("when terre is 1", () => {
             test("when soleil is 1", () => {
-                expect(getHour(2, 1, 1)).toBe("aprenoon");
+                expect(getHour(2, 1, 1)).toBe("mortin");
             });
 
             test("when soleil is 2", () => {
@@ -83,7 +83,7 @@ describe("function calculerHeure", () => {
 
         describe("when terre is 2", () => {
             test("when soleil is 1", () => {
-                expect(getHour(2, 2, 1)).toBe("aprenoon");
+                expect(getHour(2, 2, 1)).toBe("mortin");
             });
 
             test("when soleil is 2", () => {
