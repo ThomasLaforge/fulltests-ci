@@ -16,25 +16,21 @@ export function getValue(lune: number, terre: number, soleil: number): number {
 
     // additionner les valeurs
     let heure = lune + terre + soleil;
+
+    if(soleil === 2) {
+        if(terre === 2){
+            return 6;
+        }
+
+        heure += terre + 2
+    }
     
+
     if(lune === 1){
         heure -= 2
     }
-
-    if(soleil === 2) {
-        heure += terre
-
-        if(terre === 1) {
-            heure += 2;
-        }
-        
-        if(terre == 2) {
-            heure = 6;
-        }
-    }
-    
-    if(!(soleil === 2 && terre === 2) && lune === 2){
-        heure /= 2;
+    else {
+        heure = Math.floor(heure / 2);
     }
 
     return heure;
@@ -65,16 +61,8 @@ export function getHourFromValue(value: number): string {
 // }
 
 export function getHour(lune: number, terre: number, soleil: number): string {
-    if(lune === 1 && soleil === 1){
-        return "mortin";
-    }
-    if(lune === 2 && soleil === 1){
-        return "aprenoon";
-    }
-    if(lune === 2 && terre === 1 && soleil === 2){
-        return "soirning";
-    }
-    return "nuight";
+    const hourValue = getValue(lune, terre, soleil);
+    return getHourFromValue(hourValue);
 }
 
 // Afficher toutes les possibilités

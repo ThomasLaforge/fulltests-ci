@@ -1,0 +1,26 @@
+{
+  "name": "Node.js Dev Container",
+  "dockerFile": "../Dockerfile",
+  "context": "..",
+  "target": "development",
+  "appPort": [
+    "5173:5173"
+  ],
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "Orta.vscode-jest",
+    "ms-playwright.playwright"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/sh",
+    "eslint.packageManager": "npm",
+    "typescript.tsc.autoDetect": "off"
+  },
+  "postCreateCommand": "npm install && npm run dev",
+  "runArgs": [
+    "--init"
+  ],
+  "remoteUser": "node"
+}
