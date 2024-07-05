@@ -1,47 +1,27 @@
-import { ChangeEvent, useCallback, useState } from 'react'
-import './App.css'
-import { getHour } from './modules/heure'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Calculatrice from "./Calculatrice";
+import HeureJupyterienne from "./HeureJupyterienne";
 
-function App() {
-  const [lune, setLune] = useState(1)
-  const [terre, setTerre] = useState(1)
-  const [soleil, setSoleil] = useState(1)
-  const [showResult, setShowResult] = useState(false)
-
-  const handleChangeValue = (type: string, e: ChangeEvent<HTMLInputElement>) => {
-    console.log(type, e.target.value);
-    
-    const value = parseInt(e.target.value)
-    
-    if(value === 1 || value === 2) {
-      if (type === "lune") {
-        setLune(value)
-      } else if (type === "terre") {
-        setTerre(value)
-      } else if (type === "soleil") {
-        setSoleil(value)
-      }
-    }
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HeureJupyterienne />
+  },
+  {
+    path: "/calculatrice",
+    element: <Calculatrice />
+  },
+  {
+    path: "/heure-jupyterienne",
+    element: <HeureJupyterienne />
   }
+]);
 
-  const handleShowResult = useCallback(() => {
-    setShowResult(true)
-  }, [])
-
+export default function App(){
   return (
-      <div className="app">
-        <div className="heure-form">
-          <input type="number" id="lune" min={1} max={2} value={lune} onChange={(e) => handleChangeValue("lune", e)} />
-          <input type="number" id="terre" min={1} max={2} value={terre} onChange={(e) => handleChangeValue("terre", e)} />
-          <input type="number" id="soleil" min={1} max={2} value={soleil} onChange={(e) => handleChangeValue("soleil", e)} />
-        </div>
-
-        <button id="btn-show" onClick={handleShowResult}>Afficher</button>
-        <div className="heure">
-          {showResult && <div className="heure-value">{getHour(lune, terre, soleil)}</div>}
-        </div>
-      </div>
+   <RouterProvider router={router} />   
   )
 }
-
-export default App
