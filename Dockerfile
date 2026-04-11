@@ -10,7 +10,7 @@
 # CMD ["serve", "-s", "dist", "-l", "3000"]
 
 # Étape de base commune
-FROM node:20.15-alpine3.19 AS base
+FROM node:20.15 AS base
 WORKDIR /app
 COPY package.json .
 COPY package-lock.json .

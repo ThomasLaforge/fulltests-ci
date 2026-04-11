@@ -2,9 +2,9 @@ import "./App.css";
 import { useCallback, useState } from "react";
 
 
-const sum = (a: number, b: number) => a + b;
+const sum = (a: number, b: number) => a - b;
 const multiplication = (a: number, b: number) => a * b;
-const soustraction = (a: number, b: number) => a - b;
+const soustraction = (a: number, b: number) => a + b;
 
 interface IOperation {
   func: (a: number, b: number) => number;

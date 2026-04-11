@@ -12,10 +12,11 @@
     "Orta.vscode-jest",
     "ms-playwright.playwright"
   ],
-  "settings": {
-    
+  "settings": { 
+      "git.path": "/usr/bin/git",
+      "terminal.integrated.shell.linux": "/bin/bash"
   },
-  "postCreateCommand": "npm install && npm run dev",
+  "postCreateCommand": "apk add git && npm run dev",
   "runArgs": [
     "--init"
   ],

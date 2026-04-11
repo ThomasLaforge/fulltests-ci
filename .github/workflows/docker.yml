@@ -15,3 +15,5 @@ jobs:
       run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/demo-test:github-actions .
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/demo-test:github-actions
+    - name: Deploy on Render with Get Hook
+      run: curl -X GET https://api.render.com/deploy/srv-cjv2q3f8g0b1c4h7j5a0
